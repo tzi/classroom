@@ -89,10 +89,6 @@ const data = {
             answer: 'l’école'
         },
         {
-            src: 'la-reine.mp3',
-            answer: 'la reine'
-        },
-        {
             src: 'la-couleur.mp3',
             answer: 'la couleur'
         },
@@ -107,6 +103,10 @@ const data = {
         {
             src: 'la-nature.mp3',
             answer: 'la nature'
+        },
+        {
+            src: 'la-reine.mp3',
+            answer: 'la reine'
         },
         {
             src: 'la-route.mp3',

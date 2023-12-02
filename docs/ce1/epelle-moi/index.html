@@ -3,19 +3,42 @@
 <head>
     <meta charset="utf-8">
     <title>Timothée’s classroom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <form name="orthographe">
-        <label hidden>
-            <span>Quel mot as-tu as entendu&nbsp;?</span>
-            <input type="text" name="mot" autocomplete="off">
-        </label>
-        <div class="action">
-            <button type="button" name="again" hidden>Réécouter</button>
-            <button name="submit">Écouter un mot</button>
+    <div class="navigation">
+        <div class="navigation__page navigation__page--active" data-page="start">
+            <button type="button" name="play" class="o-button o-button--secondary">
+                <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12.9a.64.64 0 0 1-.9-.23.72.72 0 0 1-.1-.36V3.69c0-.38.3-.69.66-.69a.64.64 0 0 1 .35.1l6.67 4.3a.71.71 0 0 1 0 1.2l-6.67 4.3z"/>
+                </svg>
+                Jouer
+            </button>
         </div>
-    </form>
+        <div class="navigation__page" data-page="word">
+            <form name="orthographe">
+                <label class="c-control">
+                    <span class="c-control__label">Qu’as-tu entendu&nbsp;?</span>
+                    <input class="c-control__input" type="text" name="mot" autocomplete="off">
+                </label>
+                <div class="o-action">
+                    <button type="button" name="again" class="o-button o-button--secondary">
+                        <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.95 7.99h.12a1 1 0 0 1 .85 1.14 8 8 0 0 1-13.37 4.72l-.84.84A1 1 0 0 1 0 14V10h3.99a1 1 0 0 1 .7 1.7l-.73.74a6 6 0 0 0 9.98-3.6A1 1 0 0 1 15.07 8l-.12-.01ZM11.51.8a8 8 0 0 1 1.95 1.34l.83-.84a1 1 0 0 1 1.71.7V6h-3.98a1 1 0 0 1-.7-1.7l.72-.74a6 6 0 0 0-9.98 3.6 1 1 0 1 1-1.98-.29A8 8 0 0 1 11.51.81Z"/>
+                        </svg>
+                        Réécouter
+                    </button>
+                    <button name="submit" class="o-button">
+                        <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m3.7 2.3 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L6.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Zm5 0 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L11.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Z"/>
+                        </svg>
+                        Valider
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
