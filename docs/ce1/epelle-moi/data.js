@@ -125,8 +125,12 @@ const data = {
             answer: 'la repas'
         },
         {
-            src: 'la-roi.mp3',
+            src: 'le-roi.mp3',
             answer: 'le roi'
+        },
+        {
+            src: 'le-soir.mp3',
+            answer: 'le soir'
         },
         {
             src: 'loin.mp3',
@@ -154,6 +158,10 @@ const data = {
             answer: 'mon père',
         },
         {
+            src: 'noir.mp3',
+            answer: 'noir',
+        },
+        {
             src: 'oui.mp3',
             answer: 'oui'
         },
@@ -164,6 +172,14 @@ const data = {
         {
             src: 'pour.mp3',
             answer: 'pour'
+        },
+        {
+            src: 'pourquoi.mp3',
+            answer: 'pourquoi'
+        },
+        {
+            src: 'quoi.mp3',
+            answer: 'quoi'
         },
         {
             src: 'rond.mp3',
@@ -214,6 +230,14 @@ const data = {
             answer: 'un nuage'
         },
         {
+            src: 'un-oiseau.mp3',
+            answer: 'un oiseau'
+        },
+        {
+            src: 'un-poisson.mp3',
+            answer: 'un poisson'
+        },
+        {
             src: 'un-pull.mp3',
             answer: 'un pull'
         },
@@ -228,6 +252,10 @@ const data = {
         {
             src: 'une-couleur.mp3',
             answer: 'une couleur'
+        },
+        {
+            src: 'une-etoile.mp3',
+            answer: 'une étoile'
         },
         {
             src: 'une-journee.mp3',
