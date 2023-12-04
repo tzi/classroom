@@ -6,7 +6,13 @@ const data = {
         },
         {
             src: 'apres.mp3',
-            answer: 'après'
+            answer: 'après',
+            rejected: [
+                {
+                    answer: 'apres',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;apr<b>è</b>s&nbsp;».'
+                }
+            ],
         },
         {
             src: 'arbre.mp3',
@@ -34,7 +40,13 @@ const data = {
         },
         {
             src: 'bleu.mp3',
-            answer: 'bleu'
+            answer: 'bleu',
+            accepted: [
+                {
+                    answer: 'bleue',
+                    details: 'On dit «&nbsp;une voiture <b>bleue</b>&nbsp;», mais du «&nbsp;<b>bleu</b>&nbsp;»'
+                }
+            ],
         },
         {
             src: 'bonjour.mp3',
@@ -46,7 +58,13 @@ const data = {
         },
         {
             src: 'derriere.mp3',
-            answer: 'derrière'
+            answer: 'derrière',
+            rejected: [
+                {
+                    answer: 'apres',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;derri<b>è</b>res&nbsp;».'
+                }
+            ],
         },
         {
             src: 'des-lunettes.mp3',
@@ -58,11 +76,11 @@ const data = {
         },
         {
             src: 'du-chocolat.mp3',
-            answer: 'du-chocolat'
+            answer: 'du chocolat'
         },
         {
             src: 'du-lait.mp3',
-            answer: 'du-lait'
+            answer: 'du lait'
         },
         {
             src: 'du-sucre.mp3',
@@ -85,8 +103,14 @@ const data = {
             answer: 'joyeux'
         },
         {
-            src: 'l-ecola.mp3',
-            answer: 'l’école'
+            src: 'l-ecole.mp3',
+            answer: 'l’école',
+            rejected: [
+                {
+                    answer: 'apres',
+                    details: 'Il y a un accent aigu dans le mot «&nbsp;<b>é</b>cole&nbsp;».'
+                }
+            ],
         },
         {
             src: 'la-couleur.mp3',
@@ -121,8 +145,8 @@ const data = {
             answer: 'le bois'
         },
         {
-            src: 'la-repas.mp3',
-            answer: 'la repas'
+            src: 'le-repas.mp3',
+            answer: 'le repas'
         },
         {
             src: 'le-roi.mp3',
@@ -138,24 +162,53 @@ const data = {
         },
         {
             src: 'ma-lecon.mp3',
-            answer: 'ma leçon'
+            answer: 'ma leçon',
+            rejected: [
+                {
+                    answer: 'apres',
+                    details: 'Il y a une cédille dans le mot «&nbsp;le<b>ç</b>on&nbsp;».'
+                }
+            ],
         },
         {
             src: 'ma-mere.mp3',
-            answer: 'me mere'
+            answer: 'ma mère',
+            rejected: [
+                {
+                    answer: 'ma mere',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;m<b>è</b>re&nbsp;».'
+                }
+            ],
         },
         {
             src: 'ma-soeur.mp3',
-            answer: 'ma soeur',
-            perfect: 'ma sœur',
+            accepted: [
+                {
+                    answer: 'ma soeur',
+                    details: '«&nbsp;ma s<b>œ</b>ur&nbsp;» s’écrit avec un «&nbsp;e dans l’o&nbsp;».'
+                }
+            ],
+            answer: 'ma sœur',
         },
         {
             src: 'mon-frere.mp3',
-            answer: 'ma frère',
+            answer: 'mon frère',
+            rejected: [
+                {
+                    answer: 'mon frere',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;fr<b>è</b>re&nbsp;».'
+                }
+            ],
         },
         {
             src: 'mon-pere.mp3',
             answer: 'mon père',
+            rejected: [
+                {
+                    answer: 'mon pere',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;p<b>è</b>re&nbsp;».'
+                }
+            ],
         },
         {
             src: 'noir.mp3',
@@ -195,7 +248,13 @@ const data = {
         },
         {
             src: 'sur.mp3',
-            answer: 'sur'
+            answer: 'sur',
+            accepted: [
+                {
+                    answer: 'sûr',
+                    details: 'Il n’y a pas d’accent quand on dit «&nbsp;il est s<b>u</b>r la table&nbsp;».'
+                }
+            ],
         },
         {
             src: 'surtout.mp3',
@@ -215,7 +274,13 @@ const data = {
         },
         {
             src: 'un-carre.mp3',
-            answer: 'un carré'
+            answer: 'un carré',
+            rejected: [
+                {
+                    answer: 'un carre',
+                    details: 'Il y a un accent aigu dans le mot «&nbsp;carr<b>é</b>&nbsp;».'
+                }
+            ],
         },
         {
             src: 'un-fruit.mp3',
@@ -255,11 +320,23 @@ const data = {
         },
         {
             src: 'une-etoile.mp3',
-            answer: 'une étoile'
+            answer: 'une étoile',
+            rejected: [
+                {
+                    answer: 'une etoile',
+                    details: 'Il y a un accent aigu dans le mot «&nbsp;<b>é</b>toile&nbsp;».'
+                }
+            ],
         },
         {
             src: 'une-journee.mp3',
-            answer: 'une journée'
+            answer: 'une journée',
+            rejected: [
+                {
+                    answer: 'une journee',
+                    details: 'Il y a un accent aigu dans le mot «&nbsp;journ<b>é</b>e&nbsp;».'
+                }
+            ],
         },
         {
             src: 'une-plume.mp3',
@@ -286,8 +363,14 @@ const data = {
             answer: 'voici'
         },
         {
-            src: 'voilà.mp3',
-            answer: 'voilà'
+            src: 'voila.mp3',
+            answer: 'voilà',
+            rejected: [
+                {
+                    answer: 'voila',
+                    details: 'Il y a un accent grave dans le mot «&nbsp;voil<b>à</b>&nbsp;».'
+                }
+            ],
         },
     ]
 };

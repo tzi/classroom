@@ -9,37 +9,95 @@
 <body>
     <div class="navigation">
         <div class="navigation__page navigation__page--active" data-page="start">
-            <button type="button" name="play" class="o-button o-button--secondary">
-                <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <button type="button" name="play" class="o-button">
+                <svg class="o-button__icon" viewBox="1 1 14 14" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12.9a.64.64 0 0 1-.9-.23.72.72 0 0 1-.1-.36V3.69c0-.38.3-.69.66-.69a.64.64 0 0 1 .35.1l6.67 4.3a.71.71 0 0 1 0 1.2l-6.67 4.3z"/>
                 </svg>
                 Jouer
             </button>
         </div>
         <div class="navigation__page" data-page="word">
-            <form name="orthographe">
-                <label class="c-control">
-                    <span class="c-control__label">Qu’as-tu entendu&nbsp;?</span>
-                    <input class="c-control__input" type="text" name="mot" autocomplete="off">
-                </label>
-                <div class="o-action">
-                    <button type="button" name="again" class="o-button o-button--secondary">
-                        <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.95 7.99h.12a1 1 0 0 1 .85 1.14 8 8 0 0 1-13.37 4.72l-.84.84A1 1 0 0 1 0 14V10h3.99a1 1 0 0 1 .7 1.7l-.73.74a6 6 0 0 0 9.98-3.6A1 1 0 0 1 15.07 8l-.12-.01ZM11.51.8a8 8 0 0 1 1.95 1.34l.83-.84a1 1 0 0 1 1.71.7V6h-3.98a1 1 0 0 1-.7-1.7l.72-.74a6 6 0 0 0-9.98 3.6 1 1 0 1 1-1.98-.29A8 8 0 0 1 11.51.81Z"/>
-                        </svg>
-                        Réécouter
-                    </button>
-                    <button name="submit" class="o-button">
-                        <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m3.7 2.3 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L6.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Zm5 0 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L11.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Z"/>
-                        </svg>
-                        Valider
-                    </button>
+            <div class="container">
+                <form name="orthographe">
+                    <label class="c-control">
+                        <span class="c-control__label">Qu’as-tu entendu&nbsp;?</span>
+                        <input class="c-control__input" type="text" name="mot" autocomplete="off">
+                    </label>
+                    <div class="o-action o-action--tinier">
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            à
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            ç
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            é
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            è
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            ê
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            î
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            ï
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            ô
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            œ
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            ù
+                        </button>
+                        <button type="button" name="special-character" class="o-button o-button--tertiary">
+                            û
+                        </button>
+                    </div>
+                    <div class="o-action">
+                        <button type="button" name="again" class="o-button o-button--secondary">
+                            <svg class="o-button__icon" viewBox="-2 -2 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.95 7.99h.12a1 1 0 0 1 .85 1.14 8 8 0 0 1-13.37 4.72l-.84.84A1 1 0 0 1 0 14V10h3.99a1 1 0 0 1 .7 1.7l-.73.74a6 6 0 0 0 9.98-3.6A1 1 0 0 1 15.07 8l-.12-.01ZM11.51.8a8 8 0 0 1 1.95 1.34l.83-.84a1 1 0 0 1 1.71.7V6h-3.98a1 1 0 0 1-.7-1.7l.72-.74a6 6 0 0 0-9.98 3.6 1 1 0 1 1-1.98-.29A8 8 0 0 1 11.51.81Z"/>
+                            </svg>
+                            Réécouter
+                        </button>
+                        <button name="submit" class="o-button">
+                            <svg class="o-button__icon" viewBox="1 1 14 14" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M13.7 4.3a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-1.4 0l-3-3a1 1 0 0 1 1.4-1.4L7 9.58l5.3-5.3a1 1 0 0 1 1.4 0Z"/>
+                            </svg>
+                            Valider
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="navigation__page" data-page="result">
+        <div class="o-container">
+            <div class="c-result">
+                <div class="c-result__title">
+
                 </div>
-            </form>
+                <div class="c-result__details">
+
+                </div>
+            </div>
+            <div class="o-action">
+                <button type="button" name="next" class="o-button">
+                    <svg class="o-button__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m3.7 2.3 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L6.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Zm5 0 5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4L11.58 8l-4.3-4.3a1 1 0 0 1 1.42-1.4Z"/>
+                    </svg>
+                    Suivant
+                </button>
+            </div>
         </div>
     </div>
     <script src="data.js"></script>
+    <script src="diff.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
