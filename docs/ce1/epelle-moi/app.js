@@ -1,87 +1,10 @@
 (function () {
-    const sound = (function() {
-        let audio = null;
+    /* State */
+    const navigation = navigationManager();
+    const sound = soundManager();
+    let currentSound;
 
-        function replay() {
-            if (!audio) {
-                return null;
-            }
-            audio.play();
-        }
-
-        function play(url) {
-            audio = new Audio(url);
-            audio.play();
-        }
-
-        return {
-            play,
-            replay,
-        }
-    })();
-    
-    const navigation = (function() {
-        let currentPageName = 'start';
-        const callbackMapList = {};
-        const pageList = Array.from(document.querySelectorAll('.navigation__page'));
-        const pageMap = pageList.reduce(function(acc, page) {
-            acc[page.getAttribute('data-page')] = page;
-            
-            return acc;
-        }, {});
-
-        function open(pageName) {
-            pageMap[currentPageName].classList.remove('navigation__page--active');
-            pageMap[pageName].classList.add('navigation__page--active');
-            currentPageName = pageName;
-
-            (callbackMapList[pageName] || []).forEach(function(callback) {
-                callback();
-            });
-        }
-
-        function onPageLoad(pageName, callback) {
-            callbackMapList[pageName] = callbackMapList[pageName] || [];
-            callbackMapList[pageName].push(callback);
-        }
-       
-        return {
-            open,
-            onPageLoad,
-        }
-    })();
-
-    function randomInArray(array) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    function cleanAccent(string) {
-        return string
-            .trim()
-            .toLowerCase()
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .trim();
-    }
-
-    function cleanProposal(string) {
-        return string
-            .trim()
-            .toLowerCase()
-            .replace(/'/g, '’');
-    }
-
-    function outputResult(isSuccess, title, details = '') {
-        resultTitleElement.innerHTML = title;
-        resultTitleElement.classList.toggle('c-result__title--error', !isSuccess);
-        resultTitleElement.classList.toggle('c-result__title--success', isSuccess);
-        resultDetailsElement.innerHTML = details;
-
-        navigation.open('result');
-    }
-
-    let nextPage = 'word';
+    /* DOM Elements */
     const form = document.forms.orthographe;
     const input = form.mot;
     const againButton = form.again;
@@ -91,22 +14,63 @@
     const resultTitleElement  = document.querySelector('.c-result__title');
     const resultDetailsElement  = document.querySelector('.c-result__details');
 
-    input.focus();
-    let currentSound;
+    /* UTILS */
+    function outputResult(isSuccess, title, details = '') {
+        resultTitleElement.innerHTML = title;
+        resultTitleElement.classList.toggle('c-result__title--error', !isSuccess);
+        resultTitleElement.classList.toggle('c-result__title--success', isSuccess);
+        resultDetailsElement.innerHTML = details;
 
-    document.body.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter' && nextPage) {
-            event.preventDefault();
-            navigation.open(nextPage);
-            nextPage = '';
+        navigation.open('result');
+    }
 
-            return false;
-        }
+    /* PAGE START */
+
+    navigation.onPageLoad('start', function () {
+        navigation.setNextPage('word');
+    });
+
+    playButton.addEventListener('click', function () {
+        navigation.open('word');
+    });
+
+    /* PAGE WORD */
+
+    navigation.onPageLoad('word', function () {
+        currentSound = arrayUtils.getRandomItem(data.soundList);
+        sound.play('./sounds/' + currentSound.src);
+        input.value = '';
+        input.focus();
+    });
+
+    againButton.addEventListener('click', function () {
+        sound.replay();
+        input.focus();
+    });
+
+    nextButton.addEventListener('click', function () {
+        navigation.open('word');
+    });
+
+    specialCharButtonList.forEach(function (button) {
+        button.addEventListener('click', function() {
+            const extraChar = button.innerText.trim();
+            const caretPosition =  input.selectionStart;
+            input.value = input.value.substring(0, caretPosition) + extraChar + input.value.substring(caretPosition);
+            input.focus();
+            input.setSelectionRange(caretPosition + 1, caretPosition + 1);
+        });
+    });
+
+    /* PAGE RESULT */
+
+    navigation.onPageLoad('result', function () {
+        navigation.setNextPage('word');
     });
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        const proposal = cleanProposal(input.value);
+        const proposal = stringUtils.clean(input.value);
         const isPerfectAnswer = proposal === currentSound.answer;
         const isCustomAcceptedAnswer = (currentSound.accepted || []).find(function (accepted) {
             return proposal === accepted.answer;
@@ -135,41 +99,6 @@
         outputResult(false, 'Dommage&nbsp;!', 'La réponse était «&nbsp;' + html + '&nbsp;».');
     });
 
-    againButton.addEventListener('click', function () {
-        sound.replay();
-        input.focus();
-    });
-
-    playButton.addEventListener('click', function () {
-        navigation.open('word');
-    });
-
-    nextButton.addEventListener('click', function () {
-        navigation.open('word');
-    });
-
-    specialCharButtonList.forEach(function (button) {
-        button.addEventListener('click', function() {
-            const extraChar = button.innerText.trim();
-            const caretPosition =  input.selectionStart;
-            input.value = input.value.substring(0, caretPosition) + extraChar + input.value.substring(caretPosition);
-            input.focus();
-            input.setSelectionRange(caretPosition + 1, caretPosition + 1);
-        });
-    });
-
-    navigation.onPageLoad('start', function () {
-        nextPage = 'word';
-    });
-
-    navigation.onPageLoad('word', function () {
-        currentSound = randomInArray(data.soundList);
-        sound.play('./sounds/' + currentSound.src);
-        input.value = '';
-        input.focus();
-    });
-
-    navigation.onPageLoad('result', function () {
-        nextPage = 'word';
-    });
+    /* Let’s go */
+    navigation.open('start');
 })();
