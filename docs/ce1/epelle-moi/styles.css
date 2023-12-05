@@ -71,6 +71,42 @@ body {
     margin: 0 auto;
 }
 
+/* STEP COUNTER */
+
+.c-step-counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+    text-shadow: 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* STEP PROGRESS */
+
+.c-step-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.c-step-progress__bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 0;
+
+    background: #2ECC40;
+}
+
 /* RESULT */
 
 .c-result {

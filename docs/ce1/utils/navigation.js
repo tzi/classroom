@@ -16,7 +16,7 @@ const navigationManager = function() {
     document.body.addEventListener('keypress', function (event) {
         if (event.key === 'Enter' && nextPageName) {
             event.preventDefault();
-            open(nextPageName);
+            next();
 
             return false;
         }
@@ -50,10 +50,15 @@ const navigationManager = function() {
         nextPageName = null;
     }
 
+    function next() {
+        open(nextPageName);
+    }
+
     return {
         open,
         onPageLoad,
         setNextPage,
         removeNextPage,
+        next,
     }
 };
