@@ -47,6 +47,10 @@ const EpelleMoiGame = function (soundLength) {
     }
 
     function getSoundListByCategoryId(categoryId) {
+        if (categoryId === data.category.ALL.id) {
+            return data.soundList;
+        }
+
         return data.soundList.filter(function(sound) {
             return sound.categoryList && sound.categoryList.includes(categoryId);
         });
@@ -60,10 +64,6 @@ const EpelleMoiGame = function (soundLength) {
         formCategory.innerHTML = '';
         Object.keys(data.category)
             .filter(function (categoryId) {
-                if (categoryId === data.category.ALL.id) {
-                    return true;
-                }
-
                 return getSoundListByCategoryId(categoryId).length >= 5;
             })
             .forEach(function (categoryId) {
