@@ -1,4 +1,4 @@
-const EpelleMoiGame = function (category, soundLength) {
+const EpelleMoiGame = function (soundLength) {
 
     /* State */
     const navigation = navigationManager();
@@ -6,13 +6,15 @@ const EpelleMoiGame = function (category, soundLength) {
     let soundList;
     let currentSound;
     let currentStep = 0;
+    let currentCategoryId = data.category.ALL;
 
     /* DOM Elements */
-    const form = document.forms.orthographe;
-    const input = form.mot;
+    const formCategory = document.forms.category;
+    const formWord = document.forms.word;
+    const input = formWord.mot;
     const stepCounterElement = document.querySelector('.c-step-counter');
     const stepProgressBarElement = document.querySelector('.c-step-progress__bar');
-    const againButton = form.again;
+    const againButton = formWord.again;
     const playButton = document.querySelector('button[name="play"]');
     const nextButton = document.querySelector('button[name="next"]');
     const nextButtonLabel = document.querySelector('button[name="next"] > span');
@@ -31,26 +33,62 @@ const EpelleMoiGame = function (category, soundLength) {
         navigation.open('result');
     }
 
+    function resetStepMarkers() {
+        stepCounterElement.innerHTML = '';
+        stepProgressBarElement.style.width = 0;
+    }
+
     function updateStepMarkers() {
-        stepCounterElement.innerHTML = `${currentStep} / ${soundList.length}`;
+        if (!soundList || !currentCategoryId) {
+            resetStepMarkers()
+        }
+        stepCounterElement.innerHTML = `${data.category[currentCategoryId].label} ${currentStep} / ${soundList.length}`;
         stepProgressBarElement.style.width = `${(100 * currentStep / soundList.length)}%`
+    }
+
+    function getSoundListByCategoryId(categoryId) {
+        return data.soundList.filter(function(sound) {
+            return sound.categoryList && sound.categoryList.includes(categoryId);
+        });
     }
 
     /* PAGE START */
 
     navigation.onPageLoad('start', function () {
+        soundList = null;
+        resetStepMarkers()
+        formCategory.innerHTML = '';
+        Object.keys(data.category)
+            .filter(function (categoryId) {
+                if (categoryId === data.category.ALL.id) {
+                    return true;
+                }
+
+                return getSoundListByCategoryId(categoryId).length >= 5;
+            })
+            .forEach(function (categoryId) {
+                formCategory.innerHTML += `
+                    <label class="o-button o-button--tertiary">
+                        <input type="radio" name="category" value="${categoryId}" />
+                        <span>${data.category[categoryId].label}</span>
+                    </label>
+                `;
+            })
         navigation.setNextPage('word');
     });
 
     playButton.addEventListener('click', function () {
-        navigation.open('word');
+        if (formCategory.category.value) {
+            currentCategoryId = formCategory.category.value
+        }
+        navigation.next();
     });
 
     /* PAGE WORD */
 
     navigation.onPageLoad('word', function () {
         if (!soundList) {
-            soundList = arrayUtils.getRandomItemList(data.soundList, soundLength);
+            soundList = arrayUtils.getRandomItemList(getSoundListByCategoryId(currentCategoryId), soundLength);
             currentStep = 0;
         }
         currentSound = soundList[currentStep];
@@ -65,10 +103,6 @@ const EpelleMoiGame = function (category, soundLength) {
     againButton.addEventListener('click', function () {
         sound.replay();
         input.focus();
-    });
-
-    nextButton.addEventListener('click', function () {
-        navigation.open('word');
     });
 
     specialCharButtonList.forEach(function (button) {
@@ -89,7 +123,11 @@ const EpelleMoiGame = function (category, soundLength) {
         nextButtonLabel.innerHTML = isNextBilan ? 'Bilan' : 'Suivant';
     });
 
-    form.addEventListener('submit', function (event) {
+    nextButton.addEventListener('click', function () {
+        navigation.next();
+    });
+
+    formWord.addEventListener('submit', function (event) {
         event.preventDefault();
         const proposal = stringUtils.clean(input.value);
         const isPerfectAnswer = proposal === currentSound.answer;
@@ -123,18 +161,13 @@ const EpelleMoiGame = function (category, soundLength) {
     /* PAGE BILAN */
 
     navigation.onPageLoad('bilan', function () {
-        soundList = null;
-        navigation.setNextPage('word');
+        navigation.setNextPage('start');
     });
 
     restartButton.addEventListener('click', function () {
-        navigation.open('word');
+        navigation.next();
     });
 
     /* Let’s go */
     navigation.open('start');
-};
-
-EpelleMoiGame.category = {
-  ALL: 'all'
 };

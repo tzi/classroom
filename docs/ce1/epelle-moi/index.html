@@ -13,16 +13,22 @@
     <div class="c-step-counter"></div>
     <div class="navigation">
         <div class="navigation__page" data-page="start">
-            <button type="button" name="play" class="o-button">
-                <svg class="o-button__icon" viewBox="1 1 14 14" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12.9a.64.64 0 0 1-.9-.23.72.72 0 0 1-.1-.36V3.69c0-.38.3-.69.66-.69a.64.64 0 0 1 .35.1l6.67 4.3a.71.71 0 0 1 0 1.2l-6.67 4.3z"/>
-                </svg>
-                Jouer
-            </button>
+            <div class="container">
+                <form name="category" class="o-action o-action--tiny">
+                </form>
+                <div class="o-action">
+                    <button type="button" name="play" class="o-button">
+                        <svg class="o-button__icon" viewBox="1 1 14 14" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12.9a.64.64 0 0 1-.9-.23.72.72 0 0 1-.1-.36V3.69c0-.38.3-.69.66-.69a.64.64 0 0 1 .35.1l6.67 4.3a.71.71 0 0 1 0 1.2l-6.67 4.3z"/>
+                        </svg>
+                        Jouer
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="navigation__page" data-page="word">
             <div class="container">
-                <form name="orthographe">
+                <form name="word">
                     <label class="c-control">
                         <span class="c-control__label">Qu’as-tu entendu&nbsp;?</span>
                         <input class="c-control__input" type="text" name="mot" autocomplete="off">
@@ -128,7 +134,7 @@
     <script src="../utils/string.js"></script>
     <script src="app.js"></script>
     <script>
-        EpelleMoiGame(EpelleMoiGame.category.ALL, 5);
+        EpelleMoiGame(5);
     </script>
 </body>
 </html>
