@@ -20,17 +20,24 @@ const EpelleMoiGame = function (soundLength) {
     const nextButtonLabel = document.querySelector('button[name="next"] > span');
     const restartButton = document.querySelector('button[name="restart"]');
     const specialCharButtonList = Array.from(document.querySelectorAll('button[name="special-character"]'));
-    const resultTitleElement  = document.querySelector('.c-result__title');
-    const resultDetailsElement  = document.querySelector('.c-result__details');
+    const resultTitleElement  = document.querySelector('[data-page="result"] .c-result__title');
+    const resultDetailsElement  = document.querySelector('[data-page="result"] .c-result__details');
+    const bilanTitleElement  = document.querySelector('[data-page="bilan"] .c-result__title');
+    const bilanDetailsElement  = document.querySelector('[data-page="bilan"] .c-result__details');
 
     /* UTILS */
     function outputResult(isSuccess, title, details = '') {
+        currentSound.isSuccess = isSuccess;
         resultTitleElement.innerHTML = title;
-        resultTitleElement.classList.toggle('c-result__title--error', !isSuccess);
-        resultTitleElement.classList.toggle('c-result__title--success', isSuccess);
+        resultTitleElement.classList.toggle('c-result__color-error', !isSuccess);
+        resultTitleElement.classList.toggle('c-result__color-success', isSuccess);
         resultDetailsElement.innerHTML = details;
 
         navigation.open('result');
+    }
+
+    function getCategoryLabel(categoryId = currentCategoryId) {
+        return data.category[categoryId].label;
     }
 
     function resetStepMarkers() {
@@ -42,7 +49,7 @@ const EpelleMoiGame = function (soundLength) {
         if (!soundList || !currentCategoryId) {
             resetStepMarkers()
         }
-        stepCounterElement.innerHTML = `${data.category[currentCategoryId].label} ${currentStep} / ${soundList.length}`;
+        stepCounterElement.innerHTML = `${getCategoryLabel()} ${currentStep} / ${soundList.length}`;
         stepProgressBarElement.style.width = `${(100 * currentStep / soundList.length)}%`
     }
 
@@ -70,7 +77,7 @@ const EpelleMoiGame = function (soundLength) {
                 formCategory.innerHTML += `
                     <label class="o-button o-button--tertiary">
                         <input type="radio" name="category" value="${categoryId}" />
-                        <span>${data.category[categoryId].label}</span>
+                        <span>${getCategoryLabel(categoryId)}</span>
                     </label>
                 `;
             })
@@ -161,6 +168,19 @@ const EpelleMoiGame = function (soundLength) {
     /* PAGE BILAN */
 
     navigation.onPageLoad('bilan', function () {
+        bilanTitleElement.innerHTML = getCategoryLabel();
+        bilanDetailsElement.innerHTML = `
+            <ul class="c-result__details-list">
+                ${soundList.map(function (sound) {
+                    return `
+                        <li class="${sound.isSuccess ? 'c-result__color-success' : 'c-result__color-error'}">
+                            ${sound.answer}
+                            ${sound.isSuccess ? '👍' : ''}
+                        </li>
+                    `;
+                }).join('')}
+            </ul>
+        `;
         navigation.setNextPage('start');
     });
 

@@ -121,11 +121,11 @@ body {
     text-align: center;
 }
 
-.c-result__title--success {
+.c-result__color-success {
     color: #2ECC40;
 }
 
-.c-result__title--error {
+.c-result__color-error {
     color: #FF4136;
 }
 
@@ -139,6 +139,12 @@ body {
     font-weight: bold;
     color: #2ECC40;
     background: #2ECC4030;
+}
+
+.c-result__details-list {
+    display: table;
+    margin: auto;
+    text-align: left;
 }
 
 /* CONTROLS */
