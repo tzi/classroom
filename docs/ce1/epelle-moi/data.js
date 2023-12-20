@@ -9,7 +9,7 @@ const data = (function() {
         COULEUR : { id: 'COULEUR', label: 'Les couleurs' },
         NATURE : { id: 'NATURE', label: 'Dans la nature' },
         MAISON : { id: 'MAISON', label: 'À la maison' },
-        VILLE : { id: 'VILLE', label: 'Dans le ville' },
+        VILLE : { id: 'VILLE', label: 'Dans la ville' },
         ECOLE: { id: 'ECOLE', label: 'À l’école' },
     };
 
