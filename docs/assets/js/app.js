@@ -1,4 +1,10 @@
-const EpelleMoiGame = function (soundLength) {
+const EpelleMoiGame = function (options) {
+    const {
+        stepLength = 5,
+        displayErrorCount = false,
+        displayAddedParts = false,
+        isCaseSensitive = false,
+    } = options;
 
     /* State */
     const navigation = navigationManager();
@@ -6,7 +12,7 @@ const EpelleMoiGame = function (soundLength) {
     let soundList;
     let currentSound;
     let currentStep = 0;
-    let currentCategoryId = data.category.ALL;
+    let currentCategoryId = null;
 
     /* DOM Elements */
     const formCategory = document.forms.category;
@@ -37,7 +43,11 @@ const EpelleMoiGame = function (soundLength) {
     }
 
     function getCategoryLabel(categoryId = currentCategoryId) {
-        return data.category[categoryId].label;
+        if (!categoryId) {
+            return '';
+        }
+
+        return categoryId && data.category[categoryId] && data.category[categoryId].label;
     }
 
     function resetStepMarkers() {
@@ -46,18 +56,17 @@ const EpelleMoiGame = function (soundLength) {
     }
 
     function updateStepMarkers() {
-        if (!soundList || !currentCategoryId) {
-            resetStepMarkers()
+        if (!soundList || soundList.length < 2 || !currentCategoryId) {
+            return resetStepMarkers();
         }
         stepCounterElement.innerHTML = `${getCategoryLabel()} ${currentStep} / ${soundList.length}`;
         stepProgressBarElement.style.width = `${(100 * currentStep / soundList.length)}%`
     }
 
     function getSoundListByCategoryId(categoryId) {
-        if (categoryId === data.category.ALL.id) {
-            return data.soundList;
+        if (!categoryId) {
+            return data.soundList.filter(Boolean);
         }
-
         return data.soundList.filter(function(sound) {
             return sound.categoryList && sound.categoryList.includes(categoryId);
         });
@@ -71,7 +80,7 @@ const EpelleMoiGame = function (soundLength) {
         formCategory.innerHTML = '';
         Object.keys(data.category)
             .filter(function (categoryId) {
-                return getSoundListByCategoryId(categoryId).length >= 5;
+                return getSoundListByCategoryId(categoryId).length >= stepLength;
             })
             .forEach(function (categoryId) {
                 formCategory.innerHTML += `
@@ -85,7 +94,7 @@ const EpelleMoiGame = function (soundLength) {
     });
 
     playButton.addEventListener('click', function () {
-        if (formCategory.category.value) {
+        if (formCategory.category && formCategory.category.value) {
             currentCategoryId = formCategory.category.value
         }
         navigation.next();
@@ -95,7 +104,7 @@ const EpelleMoiGame = function (soundLength) {
 
     navigation.onPageLoad('word', function () {
         if (!soundList) {
-            soundList = arrayUtils.getRandomItemList(getSoundListByCategoryId(currentCategoryId), soundLength);
+            soundList = arrayUtils.getRandomItemList(getSoundListByCategoryId(currentCategoryId), stepLength);
             currentStep = 0;
         }
         currentSound = soundList[currentStep];
@@ -125,9 +134,18 @@ const EpelleMoiGame = function (soundLength) {
     /* PAGE RESULT */
 
     navigation.onPageLoad('result', function () {
-        const isNextBilan = currentStep === soundList.length;
-        navigation.setNextPage(isNextBilan ? 'bilan' : 'word');
-        nextButtonLabel.innerHTML = isNextBilan ? 'Bilan' : 'Suivant';
+        const isSingleWord = soundList.length === 1;
+        const isNextBilan = !isSingleWord && (currentStep === soundList.length);
+        if (isSingleWord) {
+            navigation.setNextPage('start');
+            nextButtonLabel.innerHTML = 'Recommencer';
+        } else if (isNextBilan) {
+            navigation.setNextPage('bilan');
+            nextButtonLabel.innerHTML = 'Bilan';
+        } else {
+            navigation.setNextPage('word');
+            nextButtonLabel.innerHTML = 'Suivant';
+        }
     });
 
     nextButton.addEventListener('click', function () {
@@ -136,33 +154,54 @@ const EpelleMoiGame = function (soundLength) {
 
     formWord.addEventListener('submit', function (event) {
         event.preventDefault();
-        const proposal = stringUtils.clean(input.value);
-        const isPerfectAnswer = proposal === currentSound.answer;
+        const proposal = stringUtils.clean(input.value, isCaseSensitive);
+        if (!proposal) {
+            return false;
+        }
+        const answer = stringUtils.clean(currentSound.answer, isCaseSensitive);
+        const isPerfectAnswer = proposal === answer;
         const isCustomAcceptedAnswer = (currentSound.accepted || []).find(function (accepted) {
-            return proposal === accepted.answer;
+            return proposal === stringUtils.clean(accepted.answer, isCaseSensitive);
         });
         const isCustomRejectedAnswer = (currentSound.rejected || []).find(function (rejected) {
-            return proposal === rejected.answer;
+            return proposal === stringUtils.clean(rejected.answer, isCaseSensitive);
         });
 
         if (isPerfectAnswer) {
-            return outputResult(true, 'Bravo&nbsp;!', 'La réponse était bien «&nbsp;' + currentSound.answer + '&nbsp;».');
+            return outputResult(true, 'Bravo&nbsp;!', 'La réponse était bien «&nbsp;' + answer + '&nbsp;».');
         } else if (isCustomAcceptedAnswer) {
             return outputResult(true, 'Bravo&nbsp;!', isCustomAcceptedAnswer.details);
         } else if (isCustomRejectedAnswer) {
             return outputResult(false, 'Presque&nbsp;!', isCustomRejectedAnswer.details);
         }
 
-        const diff = JsDiff.diffChars(currentSound.answer, proposal);
+        const diff = JsDiff.diffChars(answer, proposal);
+        let errorCount = 0;
+        let lastPartHasDiff = false;
+        let currentWordHasError = false
         let html = '';
         diff.forEach(function (part) {
-            if (part.added) {
-                return false;
+            const partHasDiff = (part.added || part.removed);
+            if (partHasDiff && !currentWordHasError) {
+                errorCount++;
+                currentWordHasError = true;
             }
-            const tag = part.removed ? 'b' : 'span';
-            html += `<${tag}>${part.value}</${tag}>`;
+            if (part.added) {
+                if (displayAddedParts && !lastPartHasDiff) {
+                    html += `<del>${part.value}</del>`;
+                }
+            } else if (part.removed) {
+                html += `<ins>${part.value}</ins>`;
+            } else {
+                html += `<span>${part.value}</span>`;
+            }
+            if ((/\s/).test(part.value)) {
+                currentWordHasError = false;
+            }
+            lastPartHasDiff = partHasDiff;
         });
-        outputResult(false, 'Dommage&nbsp;!', 'La réponse était «&nbsp;' + html + '&nbsp;».');
+        const title = displayErrorCount ? `${errorCount} erreur${errorCount > 1 ? 's' : ''}` : 'Dommage&nbsp;!';
+        outputResult(false, title, 'La réponse était «&nbsp;' + html + '&nbsp;».');
     });
 
     /* PAGE BILAN */

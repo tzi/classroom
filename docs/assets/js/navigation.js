@@ -2,6 +2,7 @@ const navigationManager = function() {
     /* State */
     let currentPageName = null;
     let nextPageName = null;
+    let nextPageCondition = null;
     const callbackMapList = {};
 
     /* DOM Elements */
@@ -42,12 +43,14 @@ const navigationManager = function() {
         callbackMapList[pageName].push(callback);
     }
 
-    function setNextPage(pageName) {
+    function setNextPage(pageName, condition = null) {
         nextPageName = pageName;
+        nextPageCondition = condition;
     }
 
     function removeNextPage() {
         nextPageName = null;
+        nextPageCondition = null;
     }
 
     function next() {

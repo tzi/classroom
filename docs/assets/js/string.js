@@ -8,10 +8,11 @@ const stringUtils = (function() {
             .trim();
     }
 
-    function clean(string) {
+    function clean(string, isCaseSensitive = false) {
+        string = isCaseSensitive ? string : string.toLowerCase();
+
         return string
             .trim()
-            .toLowerCase()
             .replace(/'/g, '’');
     }
 

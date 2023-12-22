@@ -19,7 +19,7 @@ const data = (function() {
             {
                 src: 'alors.mp3',
                 answer: 'alors',
-                categoryList: [ category.LIAISON.id ],
+                categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
             {
                 src: 'apres.mp3',
@@ -30,37 +30,37 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;apr<b>è</b>s&nbsp;».'
                     }
                 ],
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'arbre.mp3',
                 answer: 'arbre',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'aujourd-hui.mp3',
                 answer: 'aujourd’hui',
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'autour.mp3',
                 answer: 'autour',
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'avoir.mp3',
                 answer: 'avoir',
-                categoryList: [ category.VERBE.id ],
+                categoryList: [ category.ALL.id, category.VERBE.id ],
             },
             {
                 src: 'belle.mp3',
                 answer: 'belle',
-                categoryList: [ category.ADJECTIF.id ],
+                categoryList: [ category.ALL.id, category.ADJECTIF.id ],
             },
             {
                 src: 'blanc.mp3',
                 answer: 'blanc',
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'bleu.mp3',
@@ -71,7 +71,7 @@ const data = (function() {
                         details: 'On dit «&nbsp;une voiture <b>bleue</b>&nbsp;», mais du «&nbsp;<b>bleu</b>&nbsp;»'
                     }
                 ],
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'bonjour.mp3',
@@ -80,7 +80,7 @@ const data = (function() {
             {
                 src: 'de-la-confiture.mp3',
                 answer: 'de la confiture',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'derriere.mp3',
@@ -91,52 +91,52 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;derri<b>è</b>res&nbsp;».'
                     }
                 ],
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'des-lunettes.mp3',
                 answer: 'des lunettes',
-                categoryList: [ category.MAISON, category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.MAISON, category.ECOLE.id ],
             },
             {
                 src: 'dessous.mp3',
                 answer: 'dessous',
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'du-chocolat.mp3',
                 answer: 'du chocolat',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'du-lait.mp3',
                 answer: 'du lait',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'du-sucre.mp3',
                 answer: 'du sucre',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'fruit.mp3',
                 answer: 'fruit',
-                categoryList: [ category.NATURE, category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.NATURE, category.MAISON.id ],
             },
             {
                 src: 'hier.mp3',
                 answer: 'hier',
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'je-suis.mp3',
                 answer: 'je suis',
-                categoryList: [ category.VERBE.id ],
+                categoryList: [ category.ALL.id, category.VERBE.id ],
             },
             {
                 src: 'joyeux.mp3',
                 answer: 'joyeux',
-                categoryList: [ category.ADJECTIF.id ],
+                categoryList: [ category.ALL.id, category.ADJECTIF.id ],
             },
             {
                 src: 'l-ecole.mp3',
@@ -147,27 +147,27 @@ const data = (function() {
                         details: 'Il y a un accent aigu dans le mot «&nbsp;<b>é</b>cole&nbsp;».'
                     }
                 ],
-                categoryList: [ category.VILLE, category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE, category.ECOLE.id ],
             },
             {
                 src: 'la-couleur.mp3',
                 answer: 'la couleur',
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'la-cour.mp3',
                 answer: 'la cour',
-                categoryList: [ category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.ECOLE.id ],
             },
             {
                 src: 'la-musique.mp3',
                 answer: 'la musique',
-                categoryList: [ category.MAISON, category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.MAISON, category.ECOLE.id ],
             },
             {
                 src: 'la-nature.mp3',
                 answer: 'la nature',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'la-reine.mp3',
@@ -176,22 +176,22 @@ const data = (function() {
             {
                 src: 'la-route.mp3',
                 answer: 'la route',
-                categoryList: [ category.VILLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE.id ],
             },
             {
                 src: 'la-rue.mp3',
                 answer: 'la rue',
-                categoryList: [ category.VILLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE.id ],
             },
             {
                 src: 'le-bois.mp3',
                 answer: 'le bois',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'le-repas.mp3',
                 answer: 'le repas',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'le-roi.mp3',
@@ -200,12 +200,12 @@ const data = (function() {
             {
                 src: 'le-soir.mp3',
                 answer: 'le soir',
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'loin.mp3',
                 answer: 'loin',
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'ma-lecon.mp3',
@@ -216,7 +216,7 @@ const data = (function() {
                         details: 'Il y a une cédille dans le mot «&nbsp;le<b>ç</b>on&nbsp;».'
                     }
                 ],
-                categoryList: [ category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.ECOLE.id ],
             },
             {
                 src: 'ma-mere.mp3',
@@ -227,7 +227,7 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;m<b>è</b>re&nbsp;».'
                     }
                 ],
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'ma-soeur.mp3',
@@ -238,7 +238,7 @@ const data = (function() {
                         details: '«&nbsp;ma s<b>œ</b>ur&nbsp;» s’écrit avec un «&nbsp;e dans l’o&nbsp;».'
                     }
                 ],
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'mon-frere.mp3',
@@ -249,7 +249,7 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;fr<b>è</b>re&nbsp;».'
                     }
                 ],
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'mon-pere.mp3',
@@ -260,12 +260,12 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;p<b>è</b>re&nbsp;».'
                     }
                 ],
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'noir.mp3',
                 answer: 'noir',
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'oui.mp3',
@@ -278,7 +278,7 @@ const data = (function() {
             {
                 src: 'pour.mp3',
                 answer: 'pour',
-                categoryList: [ category.LIAISON.id ],
+                categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
             {
                 src: 'pourquoi.mp3',
@@ -291,17 +291,17 @@ const data = (function() {
             {
                 src: 'rond.mp3',
                 answer: 'rond',
-                categoryList: [ category.ADJECTIF, category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.ADJECTIF, category.ECOLE.id ],
             },
             {
                 src: 'rouge.mp3',
                 answer: 'rouge',
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'sous.mp3',
                 answer: 'sous',
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'sur.mp3',
@@ -312,27 +312,27 @@ const data = (function() {
                         details: 'Il n’y a pas d’accent quand on dit «&nbsp;il est s<b>u</b>r la table&nbsp;».'
                     }
                 ],
-                categoryList: [ category.ESPACE.id ],
+                categoryList: [ category.ALL.id, category.ESPACE.id ],
             },
             {
                 src: 'surtout.mp3',
                 answer: 'surtout',
-                categoryList: [ category.LIAISON.id ],
+                categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
             {
                 src: 'toujours.mp3',
                 answer: 'toujours',
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'un-animal.mp3',
                 answer: 'un animal',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'un-arbre.mp3',
                 answer: 'un arbre',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'un-carre.mp3',
@@ -343,37 +343,37 @@ const data = (function() {
                         details: 'Il y a un accent aigu dans le mot «&nbsp;carr<b>é</b>&nbsp;».'
                     }
                 ],
-                categoryList: [ category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.ECOLE.id ],
             },
             {
                 src: 'un-fruit.mp3',
                 answer: 'un fruit',
-                categoryList: [ category.NATURE, category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.NATURE, category.MAISON.id ],
             },
             {
                 src: 'un-livre.mp3',
                 answer: 'un livre',
-                categoryList: [ category.ECOLE.id ],
+                categoryList: [ category.ALL.id, category.ECOLE.id ],
             },
             {
                 src: 'un-nuage.mp3',
                 answer: 'un nuage',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'un-oiseau.mp3',
                 answer: 'un oiseau',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'un-poisson.mp3',
                 answer: 'un poisson',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'un-pull.mp3',
                 answer: 'un pull',
-                categoryList: [ category.MAISON.id ],
+                categoryList: [ category.ALL.id, category.MAISON.id ],
             },
             {
                 src: 'un-voyage.mp3',
@@ -382,12 +382,12 @@ const data = (function() {
             {
                 src: 'une-balle.mp3',
                 answer: 'une balle',
-                categoryList: [ category.ECOLE, category.MAISON],
+                categoryList: [ category.ALL.id, category.ECOLE, category.MAISON],
             },
             {
                 src: 'une-couleur.mp3',
                 answer: 'une couleur',
-                categoryList: [ category.COULEUR.id ],
+                categoryList: [ category.ALL.id, category.COULEUR.id ],
             },
             {
                 src: 'une-etoile.mp3',
@@ -408,37 +408,37 @@ const data = (function() {
                         details: 'Il y a un accent aigu dans le mot «&nbsp;journ<b>é</b>e&nbsp;».'
                     }
                 ],
-                categoryList: [ category.TEMPS.id ],
+                categoryList: [ category.ALL.id, category.TEMPS.id ],
             },
             {
                 src: 'une-plume.mp3',
                 answer: 'une plume',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'une-rue.mp3',
                 answer: 'une rue',
-                categoryList: [ category.VILLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE.id ],
             },
             {
                 src: 'une-souris.mp3',
                 answer: 'une souris',
-                categoryList: [ category.NATURE.id ],
+                categoryList: [ category.ALL.id, category.NATURE.id ],
             },
             {
                 src: 'une-ville.mp3',
                 answer: 'une ville',
-                categoryList: [ category.VILLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE.id ],
             },
             {
                 src: 'une-voiture.mp3',
                 answer: 'une voiture',
-                categoryList: [ category.VILLE.id ],
+                categoryList: [ category.ALL.id, category.VILLE.id ],
             },
             {
                 src: 'voici.mp3',
                 answer: 'voici',
-                categoryList: [ category.LIAISON.id ],
+                categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
             {
                 src: 'voila.mp3',
@@ -449,7 +449,7 @@ const data = (function() {
                         details: 'Il y a un accent grave dans le mot «&nbsp;voil<b>à</b>&nbsp;».'
                     }
                 ],
-                categoryList: [ category.LIAISON.id ],
+                categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
         ]
     };

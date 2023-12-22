@@ -135,10 +135,24 @@ body {
     text-align: center;
 }
 
-.c-result__details b {
+.c-result__details ins {
+    display: inline-block;
+    padding: 0 0.2em;
+    background-color: #d4fcbc;
+    color: #333;
     font-weight: bold;
-    color: #2ECC40;
-    background: #2ECC4030;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.c-result__details del {
+    display: inline-block;
+    padding: 0 0.2em;
+    background-color: #fbb;
+    color: #555;
+    font-weight: bold;
+    text-decoration: line-through;
+    text-shadow: none;
 }
 
 .c-result__details-list {
