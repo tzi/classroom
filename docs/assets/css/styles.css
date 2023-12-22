@@ -2,13 +2,13 @@
     font-family: 'Cursive standard';
     font-weight: normal;
     src: local('Cursive standard'),
-        url('./fonts/Cursive standard.woff2') format("woff"2);
+        url('../fonts/Cursive standard.woff2') format("woff"2);
 }
 @font-face {
     font-family: 'Cursive standard';
     font-weight: bold;
     src: local('Cursive standard'),
-        url('./fonts/Cursive standard Bold.woff2') format("woff"2);
+        url('../fonts/Cursive standard Bold.woff2') format("woff"2);
 }
 
 * {
