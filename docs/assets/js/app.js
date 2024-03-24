@@ -80,6 +80,9 @@ const EpelleMoiGame = function (options) {
         formCategory.innerHTML = '';
         Object.keys(data.category)
             .filter(function (categoryId) {
+                return !data.category[categoryId].hide
+            })
+            .filter(function (categoryId) {
                 return getSoundListByCategoryId(categoryId).length >= stepLength;
             })
             .forEach(function (categoryId) {

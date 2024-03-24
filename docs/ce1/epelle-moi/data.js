@@ -4,13 +4,14 @@ const data = (function() {
         LIAISON : { id: 'LIAISON', label: 'Mots de liaisons' },
         TEMPS : { id: 'TEMPS', label: 'Le temps' },
         ESPACE : { id: 'ESPACE', label: 'L’espace' },
-        VERBE : { id: 'VERBE', label: 'Les verbes' },
-        ADJECTIF : { id: 'ADJECTIF', label: 'Les adjectifs' },
+        VERBE : { id: 'VERBE', label: 'Les verbes', hide: true },
+        ADJECTIF : { id: 'ADJECTIF', label: 'Les adjectifs', hide: true },
         COULEUR : { id: 'COULEUR', label: 'Les couleurs' },
-        NATURE : { id: 'NATURE', label: 'Dans la nature' },
-        MAISON : { id: 'MAISON', label: 'À la maison' },
-        VILLE : { id: 'VILLE', label: 'Dans la ville' },
-        ECOLE: { id: 'ECOLE', label: 'À l’école' },
+        NATURE : { id: 'NATURE', label: 'Dans la nature', hide: true },
+        MAISON : { id: 'MAISON', label: 'À la maison', hide: true },
+        VILLE : { id: 'VILLE', label: 'Dans la ville', hide: true },
+        ECOLE: { id: 'ECOLE', label: 'À l’école', hide: true },
+        MARS: { id: 'MARS', label: 'Nouveaux mots (mars)' },
     };
 
     return {
@@ -451,6 +452,87 @@ const data = (function() {
                 ],
                 categoryList: [ category.ALL.id, category.LIAISON.id ],
             },
+
+            /* 21 MARS */
+            {
+                src: 'la-peinture.mp3',
+                answer: 'la peinture',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'ceinture.mp3',
+                answer: 'ceinture',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'plein.mp3',
+                answer: 'plein',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'ma-main.mp3',
+                answer: 'ma main',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'du-pain.mp3',
+                answer: 'du pain',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+
+            /* 22 MARS */
+            {
+                src: 'copain.mp3',
+                answer: 'copain',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'en-train-de.mp3',
+                answer: 'en train de',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'demain.mp3',
+                answer: 'demain',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'soudain.mp3',
+                answer: 'soudain',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'maintenant.mp3',
+                answer: 'maintenant',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+
+            /* 25 MARS */
+            {
+                src: 'un-timbre.mp3',
+                answer: 'un timbre',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'impossible.mp3',
+                answer: 'impossible',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'important.mp3',
+                answer: 'important',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'j-ai-faim.mp3',
+                answer: 'j’ai faim',
+                categoryList: [ category.ALL.id, category.MARS.id ],
+            },
+            {
+                src: 'brun.mp3',
+                answer: 'brun',
+                categoryList: [ category.ALL.id, category.COULEUR, category.MARS.id ],
+            }
         ]
     };
 })();
