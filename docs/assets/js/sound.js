@@ -9,12 +9,20 @@ const soundManager = function() {
     }
 
     function play(url) {
+        if (audio) {
+            stop();
+        }
         audio = new Audio(url);
         audio.play();
+    }
+
+    function stop() {
+        audio.pause();
     }
 
     return {
         play,
         replay,
+        stop,
     }
 };

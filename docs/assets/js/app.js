@@ -137,6 +137,7 @@ const EpelleMoiGame = function (options) {
     /* PAGE RESULT */
 
     navigation.onPageLoad('result', function () {
+        sound.stop();
         const isSingleWord = soundList.length === 1;
         const isNextBilan = !isSingleWord && (currentStep === soundList.length);
         if (isSingleWord) {

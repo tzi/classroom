@@ -192,14 +192,22 @@ body {
     background: rgba(255, 255, 255, 0.5);
 
     color: black;
-    font-size: 60px;
+    font-size: 24px;
     font-family: 'Cursive standard', cursive, sans-serif;
     font-weight: bold;
+}
+
+.c-control__input--one-word {
+    font-size: 60px;
 }
 
 @media (max-width: 599px) {
     .c-control__input {
         padding: 3vw 7vw;
+        font-size: 4vw;
+    }
+
+    .c-control__input--one-word {
         font-size: 10vw;
     }
 }
